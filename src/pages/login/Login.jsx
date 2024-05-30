@@ -15,15 +15,7 @@ export default function Login() {
     const handleLogin = (e) => {
         e.preventDefault();
         login({ email, password }, dispatch);
-        Toastify({
-            text: 'Đăng nhập thành công',
-            style: {
-              background: "linear-gradient(to right, #00b09b, #96c93d)",
-              display : "flex",
-              justifyContent: "center",  // Căn giữa theo chiều ngang
-              alignItems: "center",
-            },
-          }).showToast();
+        
     };
     return (
         <div className="login">
