@@ -20,19 +20,28 @@ const ForgotPassword = () => {
         setPassword(passwordRef.current.value);
         try {
             const data = await axios.post(`${process.env.REACT_APP_URL}/api/auth/forgotPassword`, {email, password})
+            Toastify({
+                text: 'Reset mật khẩu thành công',
+                style: {
+                  background: "linear-gradient(to right, #00b09b, #96c93d)",
+                  display : "flex",
+                  justifyContent: "center",  // Căn giữa theo chiều ngang
+                  alignItems: "center",
+                },
+            }).showToast();
             navigate("/login")
         } catch(err) {
-            console.log(err);
+            Toastify({
+                text: err.response.data,
+                style: {
+                  background: "red",
+                  display : "flex",
+                  justifyContent: "center",  // Căn giữa theo chiều ngang
+                  alignItems: "center",
+                },
+              }).showToast();
         }
-        Toastify({
-            text: 'Reset mật khẩu thành công',
-            style: {
-              background: "linear-gradient(to right, #00b09b, #96c93d)",
-              display : "flex",
-              justifyContent: "center",  // Căn giữa theo chiều ngang
-              alignItems: "center",
-            },
-        }).showToast();
+        
     }
   return (
     <div className="login">
